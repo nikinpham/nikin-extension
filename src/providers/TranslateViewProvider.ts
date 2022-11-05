@@ -10,7 +10,6 @@ import {
 } from "vscode";
 import { getUri } from "../utilities/getUri";
 import { langs } from "../utilities/languages";
-import mergeJson from "../utilities/mergeJson";
 const translator = new GoogleTranslator();
 
 export class TranslateViewProvider implements WebviewViewProvider {
