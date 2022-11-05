@@ -33,7 +33,6 @@ export class TranslateViewProvider implements WebviewViewProvider {
       this._extensionUri
     );
 
-    // Sets up an event listener to listen for messages passed from the webview view context
     // and executes code based on the message that is received
     this._setWebviewMessageListener(webviewView);
   }
