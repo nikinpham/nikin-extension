@@ -3,6 +3,9 @@
 Translate Tools
 `https://github.com/translate-tools/core `
 
+UI Kit
+`@vscode/webview-ui-toolkit`
+
 Install:
 
 ```

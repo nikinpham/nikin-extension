@@ -1,3 +1,4 @@
+import { GoogleTranslator } from "@translate-tools/core/translators/GoogleTranslator";
 import {
   CancellationToken,
   Uri,
@@ -8,9 +9,8 @@ import {
   window,
 } from "vscode";
 import { getUri } from "../utilities/getUri";
-import { GoogleTranslator } from "@translate-tools/core/translators/GoogleTranslator";
 import { langs } from "../utilities/languages";
-import replaceStringInFile from "../utilities/replaceStringInFile";
+import mergeJson from "../utilities/mergeJson";
 const translator = new GoogleTranslator();
 
 export class TranslateViewProvider implements WebviewViewProvider {
@@ -47,9 +47,12 @@ export class TranslateViewProvider implements WebviewViewProvider {
       "dist",
       "toolkit.js",
     ]);
-    const mainUri = getUri(webview, extensionUri, ["webview-ui", "main.js"]);
+    const mainUri = getUri(webview, extensionUri, [
+      "webview-ui/translate",
+      "main.js",
+    ]);
     const stylesUri = getUri(webview, extensionUri, [
-      "webview-ui",
+      "webview-ui/translate",
       "styles.css",
     ]);
 
@@ -85,7 +88,7 @@ export class TranslateViewProvider implements WebviewViewProvider {
               ${Object.keys(langs)
                 .map((key: string, index: number) => {
                   return `<vscode-option key=${index} value=${key} ${
-                    key === "vi" ? "selected" : ""
+                    key === "en" ? "selected" : ""
                   }>${langs[key]} </vscode-option>`;
                 })
                 .join(" ")}
@@ -98,7 +101,7 @@ export class TranslateViewProvider implements WebviewViewProvider {
           </section>
           <vscode-button id="translate-button">Translate</vscode-button>
           <section>
-            <vscode-text-area id="translation" resize="vertical" rows="5">Translation</vscode-text-area>
+            <vscode-text-area id="translation" resize="vertical" rows="5" readonly>Translation</vscode-text-area>
           </section>
           <vscode-button id="copy-button">Copy</vscode-button>
 

@@ -3,6 +3,8 @@
   "displayName": "Nikin Extension",
   "description": "",
   "version": "0.0.1",
+  "publisher": "Nikin Pham",
+  "pricing": "Free",
   "engines": {
     "vscode": "^1.72.0"
   },
@@ -10,8 +12,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:nikin-extension.helloWorld",
-    "onView:translateHelper"
+    "onView:translateHelper",
+    "*"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -19,6 +21,10 @@
       {
         "command": "nikin-extension.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "nikin-extension.copyTranslation",
+        "title": "Copy Translation"
       }
     ],
     "viewsContainers": {
@@ -49,7 +55,28 @@
           "icon": "media/dep.svg"
         }
       ]
-    }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "title": "Nikin Translate",
+          "command": "nikin-extension.helloWorld",
+          "group": "nikinGroup@1"
+        },
+        {
+          "title": "Nikin Translate 2",
+          "command": "nikin-extension.copyTranslation",
+          "group": "nikinGroup@1"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "nikin-extension.helloWorld",
+        "key": "ctrl+shift+t",
+        "mac": "cmd+shift+t"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
