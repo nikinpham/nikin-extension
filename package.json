@@ -3,8 +3,12 @@
   "displayName": "Nikin Extension",
   "description": "",
   "version": "0.0.1",
-  "publisher": "Nikin Pham",
+  "publisher": "NikinExtension",
   "pricing": "Free",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nikinpham/nikin-extension"
+  },
   "engines": {
     "vscode": "^1.72.0"
   },
